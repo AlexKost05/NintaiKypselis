@@ -144,15 +144,14 @@
   }
   .logo-icon {
     width: 44px; height: 44px;
-    background: var(--red);
     display: flex; align-items: center; justify-content: center;
     font-family: var(--font-display);
     font-size: 1.1rem;
     font-weight: 900;
-    color: var(--white);
-    letter-spacing: 0.05em;
+    background-color: var(--off-white); 
     position: relative;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    border-radius: 50%;
+    
   }
   .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
   .logo-name {
@@ -812,9 +811,7 @@
   .field select:focus { border-color: var(--red); box-shadow: 0 0 0 3px var(--red-glow); }
   .field select option { background: var(--charcoal); }
   .field textarea { min-height: 110px; }
-  .social-links {
-    display: flex; gap: 1rem; margin-top: 0.5rem;
-  }
+  .social-links {display: flex; gap: 1rem; margin-top: 0.5rem; }
   .social-link {
     width: 42px; height: 42px;
     background: var(--black);
@@ -829,6 +826,18 @@
     letter-spacing: 0.05em;
   }
   .social-link:hover { border-color: var(--red); color: var(--red); background: rgba(179,0,0,0.08); }
+
+  .google-map {
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  outline: none; /* Αφαιρεί το προεπιλεγμένο μπλε περίγραμμα του browser */
+}
+  /* ===== GOOGLE MAPS ===== */
+  .google-map:hover,
+  .google-map:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px var(--red-glow);
+  }
 
   /* ===== FOOTER ===== */
   footer {
@@ -926,7 +935,11 @@
 <header id="site-header" role="banner">
   <nav class="nav-inner" aria-label="Κύρια Πλοήγηση">
     <a href="#hero" class="logo-wrap" aria-label="Nintai Martial Arts - Αρχική">
-      <div class="logo-icon" aria-hidden="true">忍</div>
+    
+    <div class="logo-icon">
+      <img src="images/NINTAI_STROGGYLO.png" alt="Nintai Logo" style="width: 100%; height: 100%; object-fit: cover; filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.8));">
+    </div>
+
       <div class="logo-text">
         <span class="logo-name">NINTAI</span>
         <span class="logo-sub">Martial Arts · Κυψέλη</span>
@@ -1384,19 +1397,15 @@
         <div>
           <p class="contact-detail-label" style="margin-bottom:0.75rem;">Ακολουθήστε μας</p>
           <div class="social-links">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook σελίδα Nintai Martial Arts">
-              fb
+            <a href="https://www.facebook.com/nintaikipselis/?locale=el_GR" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook σελίδα Nintai Martial Arts">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.324V1.325C24 .597 23.403 0 22.675 0z"/>
+                </svg>
             </a>
           </div>
         </div>
-
         <!-- MAP PLACEHOLDER -->
-        <!-- ★ WEBMASTER: Αντικαταστήστε αυτό το div με το Google Maps embed iframe σας -->
-        <div class="map-placeholder" role="img" aria-label="Χάρτης τοποθεσίας — Placeholder για Google Maps embed">
-          <span class="map-pin" aria-hidden="true">🗺️</span>
-          <span>Google Maps Embed</span>
-          <span style="font-size:0.65rem; opacity:0.6;">Τσιάφη 5, Κυψέλη, Αθήνα</span>
-        </div>
+         <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.268883984566!2d23.7493887764512!3d38.005381598841865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1a325b62de869%3A0xd5dc147ac5ce0353!2sNintai!5e1!3m2!1sel!2sgr!4v1775154065813!5m2!1sel!2sgr" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
       <!-- RIGHT: FORM -->
@@ -1450,7 +1459,9 @@
 <footer role="contentinfo">
   <div class="footer-inner">
     <div class="footer-logo">
-      <div class="logo-icon" style="width:36px;height:36px;font-size:0.9rem;" aria-hidden="true">忍</div>
+      <div class="logo-icon">
+      <img src="images/NINTAI_STROGGYLO.png" alt="Nintai Logo" style="width: 100%; height: 100%; object-fit: cover; filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.8));">
+      </div>
       <div class="logo-text">
         <span class="logo-name" style="font-size:0.85rem;">NINTAI</span>
         <span class="logo-sub">Martial Arts · Κυψέλη</span>
