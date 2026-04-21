@@ -1409,47 +1409,53 @@
       </div>
 
       <!-- RIGHT: FORM -->
-      <div class="reveal reveal-delay-2">
-        <div class="contact-form" id="contact-form">
-          <h3 class="form-title">Στείλτε μας Μήνυμα</h3>
-          <p class="form-sub">Συμπληρώστε τη φόρμα και θα επικοινωνήσουμε μαζί σας το συντομότερο δυνατό.</p>
-          <div class="field-group">
-            <div class="field">
-              <label for="f-name">Ονοματεπώνυμο *</label>
-              <input type="text" id="f-name" name="name" placeholder="π.χ. Μαρία Παπαδοπούλου" required autocomplete="name">
-            </div>
-            <div class="field">
-              <label for="f-phone">Τηλέφωνο *</label>
-              <input type="tel" id="f-phone" name="phone" placeholder="π.χ. 697 123 4567" required autocomplete="tel">
-            </div>
-          </div>
-          <div class="field">
-            <label for="f-age">Ηλικία Αθλητή / Τμήμα Ενδιαφέροντος</label>
-            <select id="f-age" name="age_group">
-              <option value="" disabled selected>Επιλέξτε τμήμα...</option>
-              <option value="little-ninjas">Little Ninjas (4–6 ετών)</option>
-              <option value="juniors">Juniors (6–12 ετών)</option>
-              <option value="teens">Teens (13–17 ετών)</option>
-              <option value="adults">Ενήλικες Karate (18+)</option>
-              <option value="kobudo">Kobudo – Παραδοσιακά Όπλα</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="f-msg">Μήνυμα</label>
-            <textarea id="f-msg" name="message" placeholder="Γράψτε τυχόν ερωτήσεις ή σχόλιά σας..."></textarea>
-          </div>
-          <button type="button" class="btn btn-primary" id="submit-btn" onclick="handleFormSubmit()" style="width:100%; padding:1rem; font-size:0.8rem;">
-            Αποστολή &amp; Κλείσιμο Δοκιμαστικού
-          </button>
-          <p style="font-family:var(--font-sans);font-size:0.72rem;color:var(--muted);text-align:center;margin-top:0.5rem;">
-            * Τα στοιχεία σας είναι ασφαλή και δεν κοινοποιούνται σε τρίτους.
-          </p>
-          <div id="form-success" style="display:none; padding:1.2rem; background:rgba(179,0,0,0.1); border:1px solid var(--border); text-align:center;">
-            <p style="font-family:var(--font-display); color:var(--red); font-size:0.85rem; letter-spacing:0.1em;">✓ Το μήνυμά σας εστάλη!</p>
-            <p style="font-family:var(--font-serif); font-size:0.85rem; color:var(--off-white); margin-top:0.5rem; opacity:0.8;">Θα επικοινωνήσουμε μαζί σας σύντομα. Σας περιμένουμε στο dojo!</p>
-          </div>
-        </div>
+     <div class="reveal reveal-delay-2">
+  <form class="contact-form" id="contact-form-element" action="https://formspree.io/f/ΕΔΩ_ΒΑΖΕΙΣ_ΤΟ_ID_ΣΟΥ" method="POST">
+    <h3 class="form-title">Στείλτε μας Μήνυμα</h3>
+    <p class="form-sub">Συμπληρώστε τη φόρμα και θα επικοινωνήσουμε μαζί σας το συντομότερο δυνατό.</p>
+    
+    <div class="field-group">
+      <div class="field">
+        <label for="f-name">Ονοματεπώνυμο *</label>
+        <input type="text" id="f-name" name="name" placeholder="π.χ. Μαρία Παπαδοπούλου" required autocomplete="name">
       </div>
+      <div class="field">
+        <label for="f-phone">Τηλέφωνο *</label>
+        <input type="tel" id="f-phone" name="phone" placeholder="π.χ. 697 123 4567" required autocomplete="tel">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="f-age">Ηλικία Αθλητή / Τμήμα Ενδιαφέροντος</label>
+      <select id="f-age" name="age_group">
+        <option value="" disabled selected>Επιλέξτε τμήμα...</option>
+        <option value="little-ninjas">Little Ninjas (4–6 ετών)</option>
+        <option value="juniors">Juniors (6–12 ετών)</option>
+        <option value="teens">Teens (13–17 ετών)</option>
+        <option value="adults">Ενήλικες Karate (18+)</option>
+        <option value="kobudo">Kobudo – Παραδοσιακά Όπλα</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="f-msg">Μήνυμα</label>
+      <textarea id="f-msg" name="message" placeholder="Γράψτε τυχόν ερωτήσεις ή σχόλιά σας..."></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%; padding:1rem; font-size:0.8rem;">
+      Αποστολή & Κλείσιμο Δοκιμαστικού
+    </button>
+
+    <p id="form-status-msg" style="font-family:var(--font-sans);font-size:0.72rem;color:var(--muted);text-align:center;margin-top:0.5rem;">
+      * Τα στοιχεία σας είναι ασφαλή και δεν κοινοποιούνται σε τρίτους.
+    </p>
+
+    <div id="form-success" style="display:none; padding:1.2rem; background:rgba(179,0,0,0.1); border:1px solid var(--border); text-align:center;">
+      <p style="font-family:var(--font-display); color:var(--red); font-size:0.85rem; letter-spacing:0.1em;">✓ Το μήνυμά σας εστάλη!</p>
+      <p style="font-family:var(--font-serif); font-size:0.85rem; color:var(--off-white); margin-top:0.5rem; opacity:0.8;">Θα επικοινωνήσουμε μαζί σας σύντομα. Σας περιμένουμε στο dojo!</p>
+    </div>
+  </form>
+</div>
 
     </div>
   </div>
