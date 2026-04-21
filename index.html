@@ -1531,18 +1531,49 @@
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
 
-  /* --- Form submit (demo) --- */
-  function handleFormSubmit() {
-    const name = document.getElementById('f-name').value.trim();
-    const phone = document.getElementById('f-phone').value.trim();
-    if (!name || !phone) {
-      alert('Παρακαλώ συμπληρώστε το ονοματεπώνυμο και το τηλέφωνό σας.');
-      return;
-    }
-    document.getElementById('contact-form').querySelector('button').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
-    // ★ WEBMASTER: Εδώ συνδέστε το backend / email service σας (π.χ. Formspree, EmailJS, κ.λπ.)
-  }
+/* --- Πραγματική αποστολή φόρμας στο Formspree --- */
+const contactForm = document.getElementById('contact-form-element');
+const submitBtn = document.getElementById('submit-btn');
+const successDiv = document.getElementById('form-success');
+const statusMsg = document.getElementById('form-status-msg');
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function(ev) {
+    ev.preventDefault(); // Σταματάει το αναίτιο refresh της σελίδας
+    
+    const data = new FormData(contactForm);
+    
+    // Αλλάζουμε το κείμενο του κουμπιού για να ξέρει ο χρήστης ότι κάτι γίνεται
+    submitBtn.innerText = "Αποστολή...";
+    submitBtn.disabled = true;
+
+    fetch(contactForm.action, {
+      method: contactForm.method,
+      body: data,
+      headers: {
+          'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        // Τέλεια! Το email έφυγε
+        contactForm.reset(); // Καθαρίζουμε τα πεδία
+        submitBtn.style.display = 'none';
+        if (statusMsg) statusMsg.style.display = 'none';
+        successDiv.style.display = 'block';
+      } else {
+        // Αν υπάρξει σφάλμα από τον server
+        alert("Ώπα! Κάτι πήγε στραβά. Δοκιμάστε ξανά σε λίγο.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Αποστολή & Κλείσιμο Δοκιμαστικού";
+      }
+    }).catch(error => {
+      // Αν υπάρχει πρόβλημα με το internet του χρήστη
+      alert("Πρόβλημα σύνδεσης. Ελέγξτε το internet σας.");
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Αποστολή & Κλείσιμο Δοκιμαστικού";
+    });
+  });
+}
 
   /* --- Active nav highlight --- */
   const sections = document.querySelectorAll('section[id]');
